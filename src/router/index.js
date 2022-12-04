@@ -4,6 +4,7 @@ import LoginView from '../views/LoginView.vue'
 import RegisterView from '../views/RegisterView.vue'
 import PasswordResetView from '../views/PasswordResetView.vue'
 import NewPasswordView from '../views/NewPasswordView.vue'
+import ProfileView from '../views/ProfileView.vue'
 
 
 const routes = [
@@ -31,6 +32,11 @@ const routes = [
     path: '/new_password',
     name: 'newPassword',
     component: NewPasswordView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView
   }
 ]
 
@@ -38,5 +44,17 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/','/login', '/register', '/new_password','/password_reset' ];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('token');
+
+  if (authRequired && loggedIn == null) {
+    next('/login');
+  } else {
+    next();
+  }
+});
 
 export default router

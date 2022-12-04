@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@ng-bootstrap/ng-bootstrap": "^13.1.0",
+    "@volar-plugins/vetur": "^0.1.0",
     "@vue/cli": "^5.0.8",
     "autoprefixer": "^10",
     "core-js": "^3.8.3",
