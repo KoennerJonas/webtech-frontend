@@ -1,5 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import LoginView from '../views/LoginView.vue'
+import RegisterView from '../views/RegisterView.vue'
+import PasswordResetView from '../views/PasswordResetView.vue'
+import NewPasswordView from '../views/NewPasswordView.vue'
+import ProfileView from '../views/ProfileView.vue'
+
 
 const routes = [
   {
@@ -10,10 +16,27 @@ const routes = [
   {
     path: '/login',
     name: 'login',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/LoginView.vue')
+    component: LoginView
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: RegisterView
+  },
+  {
+    path: '/password_reset',
+    name: 'passwordReset',
+    component: PasswordResetView
+  },
+  {
+    path: '/new_password',
+    name: 'newPassword',
+    component: NewPasswordView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileView
   }
 ]
 
@@ -21,5 +44,17 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/','/login', '/register', '/new_password','/password_reset' ];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('token');
+
+  if (authRequired && loggedIn == null) {
+    next('/login');
+  } else {
+    next();
+  }
+});
 
 export default router

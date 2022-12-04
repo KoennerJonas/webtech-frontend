@@ -1,5 +1,5 @@
 <template>
-  
+    <LoginWindow></LoginWindow>
 </template>
 
 <script>
