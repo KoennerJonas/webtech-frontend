@@ -5,6 +5,7 @@ import RegisterView from '../views/RegisterView.vue'
 import PasswordResetView from '../views/PasswordResetView.vue'
 import NewPasswordView from '../views/NewPasswordView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import ConfirmView from '../views/ConfirmView.vue'
 
 
 const routes = [
@@ -37,6 +38,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: ProfileView
+  },
+  {
+    path: '/confirm',
+    name: 'confirm',
+    component: ConfirmView
   }
 ]
 
@@ -46,7 +52,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/','/login', '/register', '/new_password','/password_reset' ];
+  const publicPages = ['/','/login', '/register', '/new_password','/password_reset','/confirm' ];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('token');
 
