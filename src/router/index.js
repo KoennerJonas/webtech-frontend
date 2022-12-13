@@ -7,6 +7,7 @@ import NewPasswordView from '../views/NewPasswordView.vue'
 import ProfileView from '../views/ProfileView.vue'
 import ConfirmView from '../views/ConfirmView.vue'
 import StartView from '@/views/StartView'
+import CreateRoomView from '@/views/CreateRoomView'
 
 
 const routes = [
@@ -49,6 +50,11 @@ const routes = [
     path: '/Start',
     name: 'Start',
     component: StartView
+  },
+  {
+  path: '/CreateRoom',
+  name: 'CreateRoom',
+  component: CreateRoomView
   }
 ]
 
@@ -58,7 +64,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/','/login', '/register', '/new_password','/password_reset','/confirm','/Start' ];
+  const publicPages = ['/','/login', '/register', '/new_password','/password_reset','/confirm','/Start', '/CreateRoom' ];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('token');
 

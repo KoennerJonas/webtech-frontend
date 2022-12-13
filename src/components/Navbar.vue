@@ -1,10 +1,13 @@
 <template>
-    <div class=" absolute w-full">
-        <div class=" flex justify-between ml-4 mt-4 " >
-            <h1 class=" font-primary font-bold text-2xl text-black duration-200 hover:text-primary">Bringify</h1>
-        </div>
-    </div>
-  
+
+  <div class="navbar">
+    <ul class="font-primary dont font-extrabold caret-amber-300 ">
+      <li>Meine Räume</li>
+      <li>stuff</li>
+      <li>stuff</li>
+    </ul>
+  </div>
+
 </template>
 
 <script>
@@ -15,5 +18,18 @@ name: "Navbar"
 </script>
 
 <style>
+.navbar{
+  width: 85%;
+  margin: auto;
+  padding:  23px 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
 
+.navbar ul li{
+  display: inline-block;
+  margin: 0 20px;
+  text-transform: uppercase;
+  position: relative;
+}
 </style>
