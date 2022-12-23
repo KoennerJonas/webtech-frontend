@@ -12,6 +12,7 @@
     "@volar-plugins/vetur": "^0.1.0",
     "@vue/cli": "^5.0.8",
     "autoprefixer": "^10",
+    "bootstrap": "^5.2.3",
     "core-js": "^3.8.3",
     "postcss": "^8",
     "tailwindcss": "^3",

@@ -19,17 +19,20 @@ name: "Navbar"
 
 <style>
 .navbar{
-  width: 85%;
-  margin: auto;
-  padding:  23px 0 0 0;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 12%;
+  padding-top: 21px;
+  height: 20%;
+
 }
 
 .navbar ul li{
-  display: inline-block;
-  margin: 0 20px;
-  text-transform: uppercase;
-  position: relative;
+  display: inline;
+  padding: 20px
+  
+
 }
 </style>
