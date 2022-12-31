@@ -8,18 +8,10 @@
       <div class="boxFormular bg-light_gray">
         <form action="?" class="form">
           <h2 className="text-white font-primary font-black text-3xl mb-20 ">Raum anlegen</h2>
-          <input v-model="username" type="text" class=" text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Raumname" required/>
-          <input v-model="username" type="password" class=" text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Kennwort" required/>
-          <div class="gegenstaende">
-            <input v-model="items" type="text" class=" itemInput text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Gegenstände" required/>
-            <button name="items" class=" itemButton bg-primary rounded-full font-bold text-white font-primary w-9 h-9">+</button>
-          </div>
-
-          <div class="itemList">
-          
-          </div>
-          
-          <button class="  bg-primary rounded-full font-bold text-white font-primary w-36 h-12 mt-16">Raum anlegen</button>
+          <input id="raumName" v-model="roomName" type="text" class=" text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Raumname" required/>
+          <input v-model="kennwort" type="password" class=" text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Kennwort" required/>
+  
+          <button class="  bg-primary rounded-full font-bold text-white font-primary w-36 h-12 mt-16" @click.prevent="createNewRoom">Raum anlegen</button>
         </form>
         
       </div>
@@ -37,7 +29,69 @@ export default {
   components:{
     Navbar,
     Logo
+  },
+  data(){
+    return{
+      owner: '1',
+      roomName: '',
+      kennwort: ''
+    }
+  },
+  methods:{
+    /*
+    createRoom(){
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
 
+      var raw = JSON.stringify({
+        roomName: this.roomName,
+        keyword: this.kennwort,
+        //Hier noch tatsächliche id bekommen
+        owner: 1,
+        members: null,
+        items: null
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/api/v1/create_room", requestOptions)
+      .catch(error => console.log('errer: ',error))    
+        
+    },*/
+    async createNewRoom(){
+      
+
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        roomName: this.roomName,
+        keyword: this.kennwort,
+        //Hier noch tatsächliche id bekommen
+        owner: 1,
+        members: null,
+        items: null
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+      const res = await fetch("http://localhost:8080/api/v1/create_room", requestOptions).then(res => {
+        if(res.status == 201){
+          this.$router.push("/Room")
+        }else{
+          document.getElementById("raumName").style.display = "Name bereits vergeben"
+        }
+      }) 
+    }
   }
 }
 </script>
@@ -46,14 +100,14 @@ export default {
 
 .display{
  height: 100vh;
- border: 3px solid black;
+
  display: flex;
  justify-content: center;
  align-items: center;
 }
 
 .boxFormular{
-  height: 60%;
+  height: 50%;
   width: 40%;
 
  border: 3px solid black;

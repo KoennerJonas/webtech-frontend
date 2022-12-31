@@ -1,6 +1,7 @@
 <template>
    <div class=" absolute w-full">
-
+    <Logo class="logo"></Logo>
+    <Navbar class="navbar"></Navbar>
   </div>
 
 <body>
