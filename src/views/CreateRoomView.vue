@@ -6,12 +6,12 @@
   <body >
     <div class="display">
       <div class="boxFormular bg-light_gray">
-        <form action="?" class="form">
+        <form v-on:submit.prevent="createNewRoom"  class="form">
           <h2 className="text-white font-primary font-black text-3xl mb-20 ">Raum anlegen</h2>
           <input id="raumName" v-model="roomName" type="text" class=" text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Raumname" required/>
           <input v-model="kennwort" type="password" class=" text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Kennwort" required/>
   
-          <button class="  bg-primary rounded-full font-bold text-white font-primary w-36 h-12 mt-16" @click.prevent="createNewRoom">Raum anlegen</button>
+          <button class="  bg-primary rounded-full font-bold text-white font-primary w-36 h-12 mt-16" >Raum anlegen</button>
         </form>
         
       </div>
@@ -38,31 +38,6 @@ export default {
     }
   },
   methods:{
-    /*
-    createRoom(){
-      var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
-
-      var raw = JSON.stringify({
-        roomName: this.roomName,
-        keyword: this.kennwort,
-        //Hier noch tatsächliche id bekommen
-        owner: 1,
-        members: null,
-        items: null
-      });
-
-      var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-      };
-
-      fetch("http://localhost:8080/api/v1/create_room", requestOptions)
-      .catch(error => console.log('errer: ',error))    
-        
-    },*/
     async createNewRoom(){
       
 
@@ -84,13 +59,29 @@ export default {
         body: raw,
         redirect: 'follow'
       };
+      
       const res = await fetch("http://localhost:8080/api/v1/create_room", requestOptions).then(res => {
-        if(res.status == 201){
-          this.$router.push("/Room")
-        }else{
-          document.getElementById("raumName").style.display = "Name bereits vergeben"
+        console.log("sus")
+        console.log(res.text())
+        if(res.status == 200){
+          this.$router.push("/Room/")
         }
       }) 
+      
+      /*
+      const result = await fetch("http://localhost:8080/api/v1/create_room", requestOptions)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .then(result => {
+          if(result.status == 200){
+          this.$router.push("/Room/")
+        }
+        }
+      )
+      .catch(error => console.log('error', error));*/
+      
+        
+      
     }
   }
 }

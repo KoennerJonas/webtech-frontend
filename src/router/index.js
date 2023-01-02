@@ -58,7 +58,7 @@ const routes = [
   component: CreateRoomView
   },
   {
-    path: '/Room',
+    path: '/Room/:rid',
     name: 'Room',
     component: RoomView
   }
@@ -70,7 +70,7 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  const publicPages = ['/','/login', '/register', '/new_password','/password_reset','/confirm','/Start', '/CreateRoom', '/Room' ];
+  const publicPages = ['/','/login', '/register', '/new_password','/password_reset','/confirm','/Start', '/CreateRoom', '/Room','/Room/:rid','/Room/1' ];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem('token');
 

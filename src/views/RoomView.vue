@@ -23,9 +23,9 @@
             <p class=" font-primary text-white text-xl">Gegenstand hinzufügen</p>
           </div>
           <div class="body itemContent">
-            <form>
-              <input v-model="items" type="text" class=" itemInput text-lg  font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Gegenstände" required/>
-              <input type="number" min="1" max="999" value="1" class=" itemInputAnzahl text-lg  font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " required/>
+            <form v-on:submit.prevent="createNewItem">
+              <input v-model="itemName" type="text" class=" itemInput text-lg  font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " placeholder="Gegenstände" required/>
+              <input v-model="ammount" type="number" min="1" max="999" class=" itemInputAnzahl text-lg  font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline " required/>
               <button name="items" class=" itemButton bg-primary rounded-full font-bold text-white font-primary w-11 h-11">+</button>
             </form>
           </div>
@@ -38,7 +38,10 @@
           </div>
           <div class="body itemContainer">
             <div class="items">
-
+              <div class="item" v-for="item in itemlist" :key="item.name">
+                {{item.name}} | {{ item.ammount }} | <input type="checkbox"> | Jonas 
+    
+              </div>
             </div>
           </div>
         </div>
@@ -66,13 +69,56 @@ export default {
     Navbar,
     Logo
   },
+  
+  
   data(){
     return{
-      gruppenbeschreibung: ''
+      itemName: '',
+      ammount: 1,
+      roomId: '',
+
+      itemlist: []
     }
   },
- 
-  
+  methods:{
+   createNewItem(){
+      let urlParams = new URLSearchParams(window.location.search);
+      this.roomId = this.$route.path
+      this.roomId = this.roomId.split('/')
+      this.roomId = this.roomId[2]
+      
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        name: this.itemName,
+        ammount: this.ammount,
+        raumid: this.roomId
+      });
+
+      var requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/api/v1/rooms/additems", requestOptions)
+        .then(response => response.text())
+        .catch(error => console.log('error', error));
+      }
+  },
+  mounted(){
+      var requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/api/v1/rooms/getitems/1", requestOptions)
+      .then(response => response.json())
+      .then(result => result.forEach(resItem => {this.itemlist.push(resItem)}))
+      .catch(error => console.log('error', error));
+  }
 }
 </script>
 
