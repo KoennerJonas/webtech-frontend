@@ -50,7 +50,10 @@
             <p class=" font-primary text-white text-xl">Mitglieder</p>
           </div>
           <div class="body">
-            
+            <div class="item" v-for="user in userlist" :key="user.id">
+                {{user.username}}
+    
+            </div>
           </div>
         </div>
       </div>
@@ -77,15 +80,13 @@ export default {
       ammount: 1,
       roomId: '',
 
-      itemlist: []
+      itemlist: [],
+      userlist: []
     }
   },
   methods:{
    createNewItem(){
-      let urlParams = new URLSearchParams(window.location.search);
-      this.roomId = this.$route.path
-      this.roomId = this.roomId.split('/')
-      this.roomId = this.roomId[2]
+      this.getRoomId()
       
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -106,19 +107,34 @@ export default {
       fetch("http://localhost:8080/api/v1/rooms/additems", requestOptions)
         .then(response => response.text())
         .catch(error => console.log('error', error));
+      },
+      getRoomId(){
+        let urlParams = new URLSearchParams(window.location.search);
+        this.roomId = this.$route.path
+        this.roomId = this.roomId.split('/')
+        this.roomId = this.roomId[2]
       }
   },
   mounted(){
+      this.getRoomId()
       var requestOptions = {
       method: 'GET',
       redirect: 'follow'
       };
-
-      fetch("http://localhost:8080/api/v1/rooms/getitems/1", requestOptions)
+      
+      var linkGetItems = "http://localhost:8080/api/v1/rooms/getitems/" + this.roomId
+      fetch(linkGetItems, requestOptions)
       .then(response => response.json())
       .then(result => result.forEach(resItem => {this.itemlist.push(resItem)}))
       .catch(error => console.log('error', error));
+
+      var linkGetUser = "http://localhost:8080/api/v1/rooms/getuser/"+ this.roomId
+      fetch(linkGetUser, requestOptions)
+      .then(response => response.json())
+      .then(result => result.forEach(resUser => {this.userlist.push(resUser)}))
+      .catch(error => console.log('error', error));
   }
+      
 }
 </script>
 

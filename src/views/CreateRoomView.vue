@@ -61,8 +61,10 @@ export default {
       };
       
       const res = await fetch("http://localhost:8080/api/v1/create_room", requestOptions).then(res => {
-        console.log("sus")
-        console.log(res.text())
+        var nr = res.text()
+        
+        console.log(nr)
+        
         if(res.status == 200){
           this.$router.push("/Room/")
         }
