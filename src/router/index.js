@@ -81,7 +81,7 @@ router.beforeEach((to, from, next) => {
     "/Room",
     "/Room/:rid",
     "/Room/1",
-    "/Room/**",
+    "/Room/88",
   ];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem("token");

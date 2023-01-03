@@ -56,6 +56,17 @@ export default {
   },
   methods: {
     async createNewRoom() {
+      var requestOptions0 = {
+        method: 'GET',
+        body: raw,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/api/v1/profile", requestOptions0)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
@@ -74,31 +85,16 @@ export default {
         body: raw,
         redirect: "follow",
       };
-      /*
-      const res = await fetch(
-        "http://localhost:8080/api/v1/create_room",
-        requestOptions
-      ).then((res) => {
-        res.text();
-
-        console.log(nr.body);
-
-        if (res.status == 200) {
-          this.$router.push("/Room/");
-        }
-      });*/
+     
 
       const result = await fetch(
         "http://localhost:8080/api/v1/create_room",
         requestOptions
       )
         .then((response) => response.text())
-        //        .then((result) => console.log(result))
         .then((result) => {
           console.log(result);
-          //          if (result.status == 200) {
           this.$router.push({ name: "Room", params: { rid: result } });
-          //S        }
         })
         .catch((error) => console.log("error", error));
     },

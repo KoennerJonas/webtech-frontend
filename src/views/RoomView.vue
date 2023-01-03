@@ -61,9 +61,9 @@
             </div>
             <div class="body itemContainer">
               <div class="items">
-                <div class="item" v-for="item in itemlist" :key="item.name">
+                <div class="item font-primary" v-for="item in itemlist" :key="item.name">
                   {{ item.name }} | {{ item.ammount }} |
-                  <input type="checkbox" /> | Jonas
+                  <input type="checkbox" /> | Jonas | <button class="removeItems text-red-600">-</button>
                 </div>
               </div>
             </div>
@@ -280,6 +280,8 @@ export default {
   width: 90%;
   height: 90%;
 }
-.items {
+.removeItems{
+  margin-left: 2%;
+  
 }
 </style>
