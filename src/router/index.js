@@ -9,6 +9,7 @@ import ConfirmView from "../views/ConfirmView.vue";
 import StartView from "@/views/StartView";
 import CreateRoomView from "@/views/CreateRoomView";
 import RoomView from "@/views/RoomView";
+import RoomsView from "@/views/RoomsView"
 
 const routes = [
   {
@@ -60,7 +61,11 @@ const routes = [
     path: "/Room/:rid",
     name: "Room",
     component: RoomView,
-  },
+  },{
+    path: "/rooms",
+    name: "rooms",
+    component: RoomsView
+  }
 ];
 
 const router = createRouter({
@@ -82,6 +87,7 @@ router.beforeEach((to, from, next) => {
     "/Room/:rid",
     "/Room/1",
     "/Room/88",
+    "/rooms"
   ];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem("token");

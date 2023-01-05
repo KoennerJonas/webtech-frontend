@@ -6,6 +6,7 @@
   <body>
     <div class="display">
       <div class="boxFormular bg-light_gray">
+        <button @click="getToken()">test</button>
         <form v-on:submit.prevent="createNewRoom" class="form">
           <h2 className="text-white font-primary font-black text-3xl mb-20 ">
             Raum anlegen
@@ -32,6 +33,7 @@
             Raum anlegen
           </button>
         </form>
+        
       </div>
     </div>
   </body>
@@ -56,16 +58,6 @@ export default {
   },
   methods: {
     async createNewRoom() {
-      var requestOptions0 = {
-        method: 'GET',
-        body: raw,
-        redirect: 'follow'
-      };
-
-      fetch("http://localhost:8080/api/v1/profile", requestOptions0)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -98,6 +90,26 @@ export default {
         })
         .catch((error) => console.log("error", error));
     },
+
+    async getToken(){
+    
+      console.log(localStorage.getItem("token", json.token))
+      /*
+      var raw1 = JSON.stringify({
+        token: localStorage.getItem("token")
+      });
+
+      var requestOptions0 = {
+        method: 'POST',
+        body: raw1,
+        redirect: 'follow'
+      };
+
+      fetch("http://localhost:8080/api/v1/current_user", requestOptions0)
+      .then(response => response.text())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));*/
+    }
   },
 };
 </script>
