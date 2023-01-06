@@ -1,7 +1,7 @@
 <template>
   <div className="flex items-center justify-center h-screen hover">
           <div className="flex flex-row w-3/5 h-4/6">
-              <div className="flex flex-col justify-center items-center w-2/5 h-full bg-light_gray">
+              <div className="flex flex-col justify-center items-center w-2/5 h-full bg-light_gray rounded-l-md">
                   <h2 className="text-white font-primary font-black text-3xl ">Logge dich ein</h2>
                   <form v-on:submit.prevent="handleSignin"  class=" w-2/3">
                       <h3 id="invalid" class=" hidden text-center font-primary text-black">Invalide Anmeldedaten!</h3>
@@ -25,10 +25,10 @@
               </div>
           </form>
           <div>
-          <h3 @click="this.$router.push('/register')" class=" cursor-pointer mt-5 text-gray-600 font-semibold font-primary text-sm">Du hast noch kein Account? <span class=" text-primary">Registrieren</span></h3>
+          <h3 @click="this.$router.push('/register')" class=" cursor-pointer mt-5 text-gray-600 font-semibold font-primary text-sm ">Du hast noch kein Account? <span class=" text-primary">Registrieren</span></h3>
           </div>
               </div>
-              <div className="relative flex items-center w-3/5 h-full bg-dark_gray">
+              <div className="relative flex items-center w-3/5 h-full bg-dark_gray rounded-r-md">
                   <img class=" p-5" src="../assets/mod.svg"/>
               </div>
               

@@ -5,23 +5,23 @@
   </header>
   <body>
     <div class="all">
-      <div class="content bg-light_gray">
+      <div class="content bg-light_gray rounded-md">
         <div class="leftSide">
-          <div class="gruppenbeschreibung bg-dark_gray">
+          <div class="gruppenbeschreibung bg-dark_gray rounded-md">
             <div class="header">
               <p class="font-primary text-white text-xl">Gruppenbeschreibung</p>
             </div>
             <div class="body bodyGruppenbeschreibung">
               <div class="beschreibung font-primary text-white">
                 <textarea
-                  class="raumPlaceholder bg-dark_gray"
+                  class="raumPlaceholder bg-dark_gray rounded-md"
                   placeholder="Beschreibe deine Feier"
                   v-model="gruppenbeschreibung"
                 ></textarea>
               </div>
             </div>
           </div>
-          <div class="itemHinzufuegen bg-dark_gray">
+          <div class="itemHinzufuegen bg-dark_gray rounded-md">
             <div class="header">
               <p class="font-primary text-white text-xl">
                 Gegenstand hinzufügen
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="rightSide">
-          <div class="checklisteItems bg-dark_gray">
+          <div class="checklisteItems bg-dark_gray rounded-md">
             <div class="header">
               <p class="font-primary text-white text-xl">Wer bringt was mit?</p>
             </div>
@@ -63,12 +63,12 @@
               <div class="items">
                 <div class="item font-primary" v-for="item in itemlist" :key="item.name">
                   {{ item.name }} | {{ item.ammount }} |
-                  <input type="checkbox" /> | Jonas | <button class="removeItems text-red-600">-</button>
+                  <input type="checkbox" /> | Jonas | <button class="removeItems text-red-600" @click.prevent="">-</button>
                 </div>
               </div>
             </div>
           </div>
-          <div class="mitglieder bg-dark_gray">
+          <div class="mitglieder bg-dark_gray rounded-md">
             <div class="header">
               <p class="font-primary text-white text-xl">Mitglieder</p>
             </div>
@@ -106,6 +106,13 @@ export default {
     };
   },
   methods: {
+
+    deleteItemFromRoom(){
+      this.getRoomId();
+      
+    },
+
+
     createNewItem() {
       this.getRoomId();
 
@@ -143,8 +150,7 @@ export default {
       redirect: "follow",
     };
 
-    var linkGetItems =
-      "http://localhost:8080/api/v1/rooms/getitems/" + this.roomId;
+    var linkGetItems = "http://localhost:8080/api/v1/rooms/getitems/" + this.roomId;
     fetch(linkGetItems, requestOptions)
       .then((response) => response.json())
       .then((result) =>
@@ -154,8 +160,7 @@ export default {
       )
       .catch((error) => console.log("error", error));
 
-    var linkGetUser =
-      "http://localhost:8080/api/v1/rooms/getuser/" + this.roomId;
+    var linkGetUser = "http://localhost:8080/api/v1/rooms/getuser/" + this.roomId;
     fetch(linkGetUser, requestOptions)
       .then((response) => response.json())
       .then((result) =>

@@ -1,7 +1,7 @@
 <template>
   <div className="flex items-center justify-center h-screen hover">
           <div className="flex flex-row w-3/5 h-4/6">
-              <div className="flex flex-col justify-center items-center w-2/5 h-full bg-light_gray">
+              <div className="flex flex-col justify-center items-center w-2/5 h-full bg-light_gray rounded-l-md">
                   <h2 className="text-white font-primary font-black text-3xl ">Registriere dich</h2>
                   <form  v-on:submit.prevent="handleSignup" class="w-2/3">
                   <div class=" mt-10 relative">
@@ -31,7 +31,7 @@
               </form>
               <h3 @click="this.$router.push('/login')" class=" cursor-pointer mt-5 text-gray-600 font-semibold font-primary text-sm">Du hast bereits ein Account? <span class=" text-primary">Login</span></h3>
               </div>
-              <div className="relative flex items-center w-3/5 h-full bg-dark_gray">
+              <div className="relative flex items-center w-3/5 h-full bg-dark_gray rounded-r-md">
                   <img class=" p-5" src="../assets/mod.svg"/>
               </div>
           </div>

@@ -1,7 +1,7 @@
 <template>
   <div className="flex items-center justify-center h-screen hover">
           <div className="flex flex-row w-3/5 h-4/6">
-              <div className="flex flex-col justify-center  w-2/5 h-full bg-light_gray">
+              <div className="flex flex-col justify-center  w-2/5 h-full bg-light_gray rounded-l-md	">
                   <h2 className="text-white font-primary text-center font-black text-3xl ">Password Vergessen?</h2>
                   <p class=" opacity-50 text-sm mt-5 ml-20 mr-20 text-white font-primary font-medium">Gebe deine Email-Adresse ein. Wir senden dir eine Email zu, mit welcher du dein Passwort zurücksetzen kannst.</p>
                   <form v-on:submit.prevent="requestEmail" class="">
@@ -16,7 +16,7 @@
               </div>
                   </form>
               </div>
-              <div className="relative flex items-center w-3/5 h-full bg-dark_gray">
+              <div className="relative flex items-center w-3/5 h-full bg-dark_gray rounded-r-md	">
                   <img class=" p-5" src="../assets/mod.svg"/>
               </div>
           </div>

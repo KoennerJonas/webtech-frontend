@@ -8,9 +8,18 @@
       <div class="content">
         <div class="roomfield bg-light_gray">
           <div class="suche font-primary text-white text-xl ">
-            Durchsuche deine Räume: <input class=" bg-dark_gray ro">
+            Durchsuche deine Räume: <input class=" bg-dark_gray ">
           </div>
           <div class="roomlist">
+
+            <div class="room bg-dark_gray">
+              <div class="roomIcon">
+                <img src="../assets/livingroom-svgrepo-com.svg" class="roomsvg">
+              </div>
+              <div class="roomName font-primary text-white">
+                Geburtstagsfeier für den 23 Januar 2023
+              </div>
+            </div>
 
           </div>
         </div>
@@ -48,12 +57,14 @@ export default {
 
   justify-content: center;
   align-items: center;
+  
 }
 
 .content {
   display: flex;
   width: 85%;
   height: 80%;
+  border-radius: 20px;
 }
 .roomfield{
   display: flex;
@@ -70,6 +81,7 @@ export default {
 .roomlist{
   display: flex;
   height: 92%;
+  padding: 3%;
 }
 .image{
   display: flex;
@@ -93,6 +105,27 @@ export default {
   height: 50%;
   justify-content: center;
 }
+.room{
+  margin-left: 10%;
+  width: 60%;
+  height: 7%;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  
+}
+.roomIcon{
+ height: 100%;
+}
+.roomsvg{
+  
+  height: 100%;
+  width: 100%;
+}
+.roomName{
+  padding-left: 3%;
+}
+
 input{
   margin-left: 1%;
   border-radius: 25px;

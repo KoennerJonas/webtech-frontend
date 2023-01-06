@@ -5,7 +5,7 @@
   </header>
   <body>
     <div class="display">
-      <div class="boxFormular bg-light_gray">
+      <div class="boxFormular bg-light_gray rounded-md	">
         <form v-on:submit.prevent="createNewRoom" class="form">
           <h2 className="text-white font-primary font-black text-3xl mb-20 ">
             Raum anlegen
@@ -154,8 +154,6 @@ export default {
 .boxFormular {
   height: 50%;
   width: 40%;
-
-  border: 3px solid black;
   display: flex;
   justify-content: center;
   align-items: center;
