@@ -24,10 +24,14 @@
               <a class="ml-5 text-white text-opacity-40 font-bold font-primary" href="/password_reset">Forgot Password?</a>
               </div>
           </form>
+          <div>
+          <h3 @click="this.$router.push('/register')" class=" cursor-pointer mt-5 text-gray-600 font-semibold font-primary text-sm">Du hast noch kein Account? <span class=" text-primary">Registrieren</span></h3>
+          </div>
               </div>
               <div className="relative flex items-center w-3/5 h-full bg-dark_gray">
                   <img class=" p-5" src="../assets/mod.svg"/>
               </div>
+              
           </div>
       </div>
   </template>
@@ -61,8 +65,8 @@
           headers: myHeaders,
           body: raw
           };
-          const res = await fetch("http://localhost:8080/api/v1/signin", requestOptions).then(res => {if(res.status == 200){
-              const json = res.json()
+          const res = await fetch("http://localhost:8080/api/v1/signin", requestOptions).then(async res => {if(res.status == 200){
+              const json = await res.json()
               localStorage.setItem("token", json.token)
               this.$router.push("/")
           }else if(res.status == 404){

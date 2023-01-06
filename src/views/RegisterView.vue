@@ -29,6 +29,7 @@
                   <button class="  bg-primary rounded-full font-bold text-white font-primary w-28 h-10">Registrieren</button>
                   </div>
               </form>
+              <h3 @click="this.$router.push('/login')" class=" cursor-pointer mt-5 text-gray-600 font-semibold font-primary text-sm">Du hast bereits ein Account? <span class=" text-primary">Login</span></h3>
               </div>
               <div className="relative flex items-center w-3/5 h-full bg-dark_gray">
                   <img class=" p-5" src="../assets/mod.svg"/>
