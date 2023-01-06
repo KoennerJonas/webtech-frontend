@@ -2,7 +2,6 @@
   <body>
   <Logo></Logo>
   <Navbar></Navbar>
-
     <div class="content ">
       <button class="font-primary font-extrabold bg-primary rounded-full h-14 w-40">RAUM ERSTELLEN</button>
     </div>

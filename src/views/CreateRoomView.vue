@@ -6,7 +6,6 @@
   <body>
     <div class="display">
       <div class="boxFormular bg-light_gray">
-        <button @click="getToken()">test</button>
         <form v-on:submit.prevent="createNewRoom" class="form">
           <h2 className="text-white font-primary font-black text-3xl mb-20 ">
             Raum anlegen
@@ -33,7 +32,7 @@
             Raum anlegen
           </button>
         </form>
-        
+
       </div>
     </div>
   </body>
@@ -51,13 +50,17 @@ export default {
   },
   data() {
     return {
-      owner: "1",
+      owner: "",
       roomName: "",
       kennwort: "",
+      members: {}
     };
   },
   methods: {
     async createNewRoom() {
+
+      var ownerid = await this.getToken()
+      console.log("ownerid: "+ownerid)
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -66,7 +69,7 @@ export default {
         roomName: this.roomName,
         keyword: this.kennwort,
         //Hier noch tatsächliche id bekommen
-        owner: 1,
+        owner: ownerid,
         members: null,
         items: null,
       });
@@ -77,7 +80,7 @@ export default {
         body: raw,
         redirect: "follow",
       };
-     
+
 
       const result = await fetch(
         "http://localhost:8080/api/v1/create_room",
@@ -92,8 +95,33 @@ export default {
     },
 
     async getToken(){
-    
-      console.log(localStorage.getItem("token", json.token))
+
+
+      var usertoken = localStorage.getItem("token")
+      console.log("token: " + usertoken)
+
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      var raw = JSON.stringify({
+        "token": usertoken
+      });
+
+      var requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: raw,
+        redirect: 'follow'
+      };
+
+      var userid
+      await fetch("http://localhost:8080/api/v1/current_user", requestOptions)
+        .then(response => response.json()).then(res => userid =res)
+        .catch(error => console.log('error', error));
+      userid = userid.id
+      console.log("id"+userid)
+      return userid
+      
       /*
       var raw1 = JSON.stringify({
         token: localStorage.getItem("token")
