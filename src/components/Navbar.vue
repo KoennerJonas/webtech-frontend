@@ -2,7 +2,7 @@
 
   <div class="navbar">
     <ul class="font-primary dont font-extrabold caret-amber-300 ">
-      <li>Meine Räume</li>
+      <li class=" cursor-pointer" @click="this.$router.push('/rooms')">Meine Räume</li>
       <li>stuff</li>
       <li>stuff</li>
     </ul>
