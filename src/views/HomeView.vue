@@ -38,7 +38,9 @@
 export default {
   name: 'HomeView',
   components: {
-
+    methods: {
+      
+    }
   }
 }
 </script>

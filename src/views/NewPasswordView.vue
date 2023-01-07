@@ -1,7 +1,7 @@
 <template>
     <div className="flex items-center justify-center h-screen hover">
             <div className="flex flex-row w-3/5 h-4/6">
-                <div className="flex flex-col justify-center  w-2/5 h-full bg-light_gray">
+                <div className="flex flex-col justify-center  w-2/5 h-full bg-light_gray rounded-l-md">
                     <h2 className="text-white font-primary text-center font-black text-3xl ">Neues Password</h2>
                     <p class=" text-center opacity-50 text-sm mt-5 ml-20 mr-20 text-white font-primary font-medium">Du kannst nun ein neues Password vergeben.</p>
                     
@@ -18,7 +18,7 @@
                 <h2 id="invalid" class=" hidden ml-24 mt-5 fixed font-primary text-center text-white">falscher oder abgelaufener Link,<br/> frage einen neuen an!</h2>
                 </form>
                 </div>
-                <div className="relative flex items-center w-3/5 h-full bg-dark_gray">
+                <div className="relative flex items-center w-3/5 h-full bg-dark_gray rounded-r-md">
                     <img class=" p-5" src="../assets/mod.svg"/>
                 </div>
             </div>
