@@ -31,6 +31,7 @@
               <form v-on:submit.prevent="createNewItem">
                 <input
                   v-model="itemName"
+                  id="item-text"
                   type="text"
                   class="itemInput text-lg font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
                   placeholder="Gegenstände"
@@ -38,6 +39,7 @@
                 />
                 <input
                   v-model="ammount"
+                  id="ammount"
                   type="number"
                   min="1"
                   max="999"
@@ -113,9 +115,16 @@ export default {
     },
 
 
-    createNewItem() {
+    async createNewItem() {
       this.getRoomId();
-
+      document.getElementById("item-text").value = "";
+      document.getElementById("ammount").value = 1;
+      this.itemlist.push(
+        { "name": this.itemName,
+          "ammount":this.ammount,
+          "raumid": this.raumid
+        }
+      )
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
@@ -132,10 +141,11 @@ export default {
         redirect: "follow",
       };
 
-      fetch("http://localhost:8080/api/v1/rooms/additems", requestOptions)
+      await fetch("http://localhost:8080/api/v1/rooms/additems", requestOptions)
         .then((response) => response.text())
         .catch((error) => console.log("error", error));
     },
+
     getRoomId() {
       let urlParams = new URLSearchParams(window.location.search);
       this.roomId = this.$route.path;
@@ -156,6 +166,7 @@ export default {
       .then((result) =>
         result.forEach((resItem) => {
           this.itemlist.push(resItem);
+          console.log(resItem)
         })
       )
       .catch((error) => console.log("error", error));
