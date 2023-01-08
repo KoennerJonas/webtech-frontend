@@ -61,7 +61,7 @@
             <div class="body itemContainer">
               <div class="items">
                 <div class="  font-primary" v-for="item in itemlist" :key="item.name">
-                  <div class=" mr-5 items-center h-8 flex justify-between font-primary text-white mt-5 pl-3 pr-3 bg-light_gray rounded-md">
+                  <div class=" mr-5 items-center h-8 flex justify-between font-primary text-white mt-5 pl-3 pr-3 bg-light_gray rounded-xl">
                   <div class="flex">
                   <div>{{ item.ammount }}x</div>
                   <div class=" ml-2 font-semibold">{{ item.name }}</div>
@@ -87,7 +87,8 @@
             <div class="header">
               <p class="font-primary text-white text-xl font-semibold">Mitglieder</p>
             </div>
-            <div class="mitglieder-con  w-4/5">
+            <div class="mitglieder-con">
+            <div class="  w-full">
               <div class="  mr-5 font-primary text-white font-bold  " v-for="user in userlist" :key="user.id">
                 <div class=" mt-7 flex items-center  h-8 rounded-xl bg-light_gray">
                   <Avataaars :circle-color="'#FFC979'" class="w-12 mb-2  "></Avataaars> 
@@ -95,6 +96,7 @@
                 </div>
               </div>
             </div>
+          </div>
           </div>
           <div class="itemHinzufuegen bg-dark_gray rounded-md">
             <div class="header">
@@ -239,8 +241,7 @@ export default {
       },
     
     async createNewItem() {
-      document.getElementById("item-text").value = "";
-      document.getElementById("ammount").value = 1;
+      
       this.getRoomId();
       
       this.itemlist.push(
@@ -257,7 +258,8 @@ export default {
         ammount: this.ammount,
         raumid: this.roomId,
       });
-
+      this.ammount = 1;
+      this.itemName = ""
       var requestOptions = {
         method: "PUT",
         headers: myHeaders,
@@ -266,7 +268,7 @@ export default {
       };
 
       await fetch("http://localhost:8080/api/v1/rooms/additems", requestOptions)
-        .then((response) => response.text())
+        
         .catch((error) => console.log("error", error));
     },
 
@@ -289,10 +291,7 @@ export default {
     fetch(linkGetItems, requestOptions)
       .then((response) => response.json())
       .then((result) =>
-        result.forEach((resItem) => {
-          this.itemlist.push(resItem);
-
-        })
+       this.itemlist = result
       )
       .catch((error) => console.log("error", error));
 
@@ -411,6 +410,8 @@ export default {
 }
 .mitglieder-con{
   overflow-y: scroll;
+  width: 90%;
+  height: 90%;
 }
 .header {
   margin-top: 5px;
