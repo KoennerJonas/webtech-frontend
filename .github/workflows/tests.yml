@@ -6,5 +6,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: run tests
+      run: nom run build
       run: npm run test:unit
     
