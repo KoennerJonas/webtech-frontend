@@ -2,8 +2,11 @@
 
 <body>
   <Navbar></Navbar>
+  
   <div class="containerAll">
-    
+    <div class="vektorbg">
+      <img src="../assets/Vector.svg" alt="">
+    </div>
     <div class="containerLeft">
       <div class="powerSatz font-primary font-black font text-6xl leading-normal ">
         Organisiere <br> dein, Bringify!
@@ -19,9 +22,7 @@
       <img src="../assets/Party.svg" alt="Party">
     </div>
 
-    <div class="vektorbg">
-      <img src="../assets/Vector.svg" alt="">
-    </div>
+    
   </div>
   
 
@@ -51,6 +52,7 @@ export default {
 .containerAll{
   display: flex;
   height: 100vh;
+  overflow: hidden;
   align-items: center;
  
   
@@ -93,9 +95,14 @@ export default {
 }
 .vektorbg{
   position: fixed;
-  /*z-index: -1;*/
+  top:-20px;
+  
+  bottom: 0;
+  
+  z-index: -1;
   width:100%;
   margin: 0;
+
 }
 
 </style>
