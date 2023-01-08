@@ -1,33 +1,26 @@
 <template>
   <header>
-    <Logo class="logo"></Logo>
     <Navbar class="navbar"></Navbar>
   </header>
   <body>
     <div class="display">
       <div class="boxFormular bg-light_gray rounded-md	">
         <form v-on:submit.prevent="createNewRoom" class="form">
-          <h2 className="text-white font-primary font-black text-3xl mb-20 ">
+          <h2 className="text-white font-primary font-black text-3xl mb-8 ">
             Raum anlegen
           </h2>
           <input
             id="raumName"
             v-model="roomName"
             type="text"
-            class="text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
+            class=" text-lg block w-full p-4 pl-10 font-semibold border  border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline placeholder:text-white text-opacity-60 "
             placeholder="Raumname"
             required
           />
-          <input
-            v-model="kennwort"
-            type="password"
-            class="text-lg block w-full p-4 pl-10 font-semibold border placeholder-placeholder border-gray-300 rounded-3xl bg-transparent text-gray-100 leading-tight focus:outline-none focus:shadow-outline"
-            placeholder="Kennwort"
-            required
-          />
+          <textarea v-model="beschreibung" class="w-full h-4/5 bg-transparent font-primary text-white border-white mt-5 g-dark_gray rounded-md border resize-none border-light_gray p-4 placeholder:text-white text-opacity-60" placeholder="Raumbeschreibung..."></textarea>
 
           <button
-            class="bg-primary rounded-full font-bold text-white font-primary w-36 h-12 mt-16"
+            class="bg-primary rounded-full font-bold text-white font-primary w-36 h-20 mt-5"
           >
             Raum anlegen
           </button>
@@ -40,19 +33,19 @@
 
 <script>
 import Navbar from "@/components/Navbar";
-import Logo from "@/components/Logo";
+
 
 export default {
   name: "CreateRoomView",
   components: {
     Navbar,
-    Logo,
+
   },
   data() {
     return {
       owner: "",
       roomName: "",
-      kennwort: "",
+      beschreibung:"",
       members: {}
     };
   },
@@ -60,18 +53,19 @@ export default {
     async createNewRoom() {
 
       var ownerid = await this.getToken()
-      console.log("ownerid: "+ownerid)
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
       var raw = JSON.stringify({
         roomName: this.roomName,
-        keyword: this.kennwort,
-        //Hier noch tatsächliche id bekommen
+        keyword: null,
+        beschreibung: this.beschreibung,
         owner: ownerid,
         members: null,
         items: null,
+        users: null,
+        
       });
 
       var requestOptions = {
@@ -88,7 +82,7 @@ export default {
       )
         .then((response) => response.text())
         .then((result) => {
-          console.log(result);
+
           this.$router.push({ name: "Room", params: { rid: result } });
         })
         .catch((error) => console.log("error", error));
@@ -98,7 +92,6 @@ export default {
 
 
       var usertoken = localStorage.getItem("token")
-      console.log("token: " + usertoken)
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
@@ -119,24 +112,8 @@ export default {
         .then(response => response.json()).then(res => userid =res)
         .catch(error => console.log('error', error));
       userid = userid.id
-      console.log("id"+userid)
       return userid
       
-      /*
-      var raw1 = JSON.stringify({
-        token: localStorage.getItem("token")
-      });
-
-      var requestOptions0 = {
-        method: 'POST',
-        body: raw1,
-        redirect: 'follow'
-      };
-
-      fetch("http://localhost:8080/api/v1/current_user", requestOptions0)
-      .then(response => response.text())
-      .then(result => console.log(result))
-      .catch(error => console.log('error', error));*/
     }
   },
 };

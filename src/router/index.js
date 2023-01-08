@@ -84,10 +84,7 @@ router.beforeEach((to, from, next) => {
     "/Start",
     "/CreateRoom",
     "/Room",
-    "/Room/:rid",
-    "/Room/1",
-    "/Room/88",
-    "/rooms"
+    "/Room/:rid"
   ];
   const authRequired = !publicPages.includes(to.path);
   const loggedIn = localStorage.getItem("token");
@@ -98,5 +95,6 @@ router.beforeEach((to, from, next) => {
     next();
   }
 });
+
 
 export default router;

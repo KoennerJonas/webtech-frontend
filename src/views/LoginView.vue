@@ -1,4 +1,6 @@
 <template>
+    <Logo></Logo>
+
   <div className="flex items-center justify-center h-screen hover">
           <div className="flex flex-row w-3/5 h-4/6">
               <div className="flex flex-col justify-center items-center w-2/5 h-full bg-light_gray rounded-l-md">
@@ -37,8 +39,12 @@
   </template>
   
   <script>
+import Logo from "@/components/Logo";
 
   export default {
+    components:{
+        Logo
+    },
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'LoginView',
     data(){

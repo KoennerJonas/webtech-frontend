@@ -1,10 +1,7 @@
 <template>
-   <div class=" absolute w-full">
-    <Logo class="logo"></Logo>
-    <Navbar class="navbar"></Navbar>
-  </div>
 
 <body>
+    <Navbar></Navbar>
   <div className=" flex items-center h-screen" >
     <ul>
       <li>
@@ -14,8 +11,8 @@
         <div class="ml-44 mt-5 font-primary font-bold"> Lorem ipsum dolor sit amet consectetur. <br> Sem pulvinar ultrices hendrerit quisque pulvinar.</div>
       </li>
       <div class=" mt-10">
-        <router-link to="/login">
-          <button class="ml-44 mt-10 font-primary font-extrabold bg-primary rounded-full w-28 h-10">Start Now</button>
+        <router-link to="/createRoom">
+          <button class="ml-44 mt-10 font-primary font-extrabold bg-primary rounded-full w-28 h-10">Starten</button>
         </router-link>
       </div>
     </ul>
@@ -33,11 +30,14 @@
 
 <script>
 
+import Navbar from "@/components/Navbar";
 
 
 export default {
   name: 'HomeView',
   components: {
+
+    Navbar,
     methods: {
       
     }
