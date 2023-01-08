@@ -1,4 +1,5 @@
 <template>
+  <Logo></Logo>
   <div className="flex items-center justify-center h-screen hover">
           <div className="flex flex-row w-3/5 h-4/6">
               <div className="flex flex-col justify-center  w-2/5 h-full bg-light_gray rounded-l-md	">
@@ -22,11 +23,13 @@
           </div>
       </div>
   </template>
-  
+
   <script>
+  import Logo from '@/components/Logo'
   export default {
     // eslint-disable-next-line vue/multi-word-component-names
     name: 'PasswordResetView',
+    components: { Logo },
     data(){
       return{
           email:""
@@ -52,4 +55,3 @@
   </script>
 
 
-  

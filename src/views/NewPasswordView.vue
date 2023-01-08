@@ -1,10 +1,11 @@
 <template>
+    <Logo></Logo>
     <div className="flex items-center justify-center h-screen hover">
             <div className="flex flex-row w-3/5 h-4/6">
                 <div className="flex flex-col justify-center  w-2/5 h-full bg-light_gray rounded-l-md">
                     <h2 className="text-white font-primary text-center font-black text-3xl ">Neues Password</h2>
                     <p class=" text-center opacity-50 text-sm mt-5 ml-20 mr-20 text-white font-primary font-medium">Du kannst nun ein neues Password vergeben.</p>
-                    
+
                 <form v-on:submit.prevent="handleSubmit">
                 <div class=" ml-20 mt-10 relative w-2/3">
                         <div class="absolute  inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -24,11 +25,13 @@
             </div>
         </div>
     </template>
-    
+
     <script>
+    import Logo from '@/components/Logo'
     export default {
       // eslint-disable-next-line vue/multi-word-component-names
       name: 'NewPasswordView',
+      components: { Logo },
       data(){
         return{
             password:""
@@ -59,4 +62,3 @@
     }
     </script>
 
-    

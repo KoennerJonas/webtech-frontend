@@ -65,7 +65,7 @@
                   <div class="flex">
                   <div>{{ item.ammount }}x</div>
                   <div class=" ml-2 font-semibold">{{ item.name }}</div>
-                  
+
                 </div>
                   <div class="flex">
                   <div class="mr-5">{{ item.username }} </div>
@@ -91,7 +91,7 @@
             <div class="  w-full">
               <div class="  mr-5 font-primary text-white font-bold  " v-for="user in userlist" :key="user.id">
                 <div class=" mt-7 flex items-center  h-8 rounded-xl bg-light_gray">
-                  <Avataaars :circle-color="'#FFC979'" class="w-12 mb-2  "></Avataaars> 
+                  <Avataaars :circle-color="'#FFC979'" class="w-12 mb-2  "></Avataaars>
                  <div class="ml-3"> {{ user.username }}</div>
                 </div>
               </div>
@@ -114,7 +114,7 @@
                   placeholder="Username"
                   required
                 />
-               
+
                 <button
                   name="username"
                   class="itemButton bg-primary rounded-full font-bold text-white font-primary w-11 h-11"
@@ -157,7 +157,7 @@ export default {
   methods: {
     check: async function(e,itemId){
       var id = await this.getToken()
-      
+
       console.log(id)
       var requestOptions = {
       method: "GET",
@@ -166,14 +166,14 @@ export default {
 
     var linkUsernameItem = "http://localhost:8080/api/v1/username_item/"+ itemId +"/"+ id;
     fetch(linkUsernameItem, requestOptions).then(response => console.log(response))
-      
+
       .catch((error) => console.log("error", error));
     this.$forceUpdate();
     },
-    
-    
+
+
     async selectitem(){
-      
+
     },
     async saveDescription(){
       var myHeaders = new Headers();
@@ -189,7 +189,7 @@ export default {
         body: raw,
         redirect: "follow",
       };
-      
+
       await fetch("http://localhost:8080/api/v1/description/" + this.roomId, requestOptions)
         .catch((error) => console.log("error", error));
     },
@@ -199,7 +199,7 @@ export default {
 
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      
+
       var raw = JSON.stringify({
         username: this.username,
       });
@@ -210,7 +210,7 @@ export default {
         body: raw,
         redirect: "follow",
       };
-      
+
       await fetch("http://localhost:8080/api/v1/add_user/"+this.roomId, requestOptions)
         .catch((error) => console.log("error", error));
     },
@@ -239,11 +239,11 @@ export default {
       return userid
 
       },
-    
+
     async createNewItem() {
       
       this.getRoomId();
-      
+
       this.itemlist.push(
         { "name": this.itemName,
           "ammount":this.ammount,
@@ -309,16 +309,16 @@ export default {
         .then((response) => response.json())
         .then((result) =>
           this.gruppenbeschreibung = result.description
-          
-        
+
+
       )
       .catch((error) => console.log("error", error));
     var linkGetRoomName = "http://localhost:8080/api/v1/room_name/" + this.roomId;
-    
+
     fetch(linkGetRoomName, requestOptions)
       .then((response) => response.json())
       .then((result) =>this.raumname = result.roomName)
-      
+
       .catch((error) => console.log("error", error));
 
     }
@@ -451,7 +451,7 @@ export default {
   justify-content: center;
 }
 .beschreibung {
-  
+
   width: 100%;
 }
 .raumPlaceholder {
@@ -466,7 +466,7 @@ export default {
 }
 .removeItems{
   margin-left: 2%;
-  
+
 }
 ::-webkit-scrollbar-track {
   background-color: transparent;

@@ -4,9 +4,7 @@ import LoginView from "../views/LoginView.vue";
 import RegisterView from "../views/RegisterView.vue";
 import PasswordResetView from "../views/PasswordResetView.vue";
 import NewPasswordView from "../views/NewPasswordView.vue";
-import ProfileView from "../views/ProfileView.vue";
 import ConfirmView from "../views/ConfirmView.vue";
-import StartView from "@/views/StartView";
 import CreateRoomView from "@/views/CreateRoomView";
 import RoomView from "@/views/RoomView";
 import RoomsView from "@/views/RoomsView"
@@ -38,19 +36,9 @@ const routes = [
     component: NewPasswordView,
   },
   {
-    path: "/profile",
-    name: "profile",
-    component: ProfileView,
-  },
-  {
     path: "/confirm",
     name: "confirm",
     component: ConfirmView,
-  },
-  {
-    path: "/Start",
-    name: "Start",
-    component: StartView,
   },
   {
     path: "/CreateRoom",
@@ -81,7 +69,6 @@ router.beforeEach((to, from, next) => {
     "/new_password",
     "/password_reset",
     "/confirm",
-    "/Start",
     "/CreateRoom",
     "/Room",
     "/Room/:rid"
