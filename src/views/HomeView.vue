@@ -15,7 +15,7 @@
         Plane Treffen mit deinen Freunden gemeinsam.<br> Egal ob Party, Geburtstagsfeier oder ein Treffen im Park. 
       </div>
       <div class="button">
-        <button class=" font-primary font-extrabold bg-primary rounded-full w-28 h-10">Starten</button>
+        <button @click="this.$router.push('/login')" class=" font-primary font-extrabold bg-primary rounded-full w-28 h-10">Starten</button>
       </div>
     </div>
     <div class="containerRight" >
