@@ -41,7 +41,7 @@
           <div class="imgbottom">
             <img src="../assets/undraw_pizza_sharing_wxop.svg"/>
           </div>
-            
+
         </div>
       </div>
     </div>
@@ -49,6 +49,7 @@
 </template>
 
 <script>
+//import fetch from 'node-fetch'
 import Navbar from "@/components/Navbar";
 
 export default {
@@ -62,7 +63,7 @@ export default {
       rooms: [],
       search: ""
     }
-    
+
   },
   methods:{
 
@@ -91,7 +92,7 @@ export default {
       userid = userid.id
       return userid
       }
-    
+
   },
   mounted(){
     var id = this.getToken().then(
@@ -106,7 +107,7 @@ export default {
           .then(result => this.rooms =result)
           .catch(error => console.log('error', error))
           }
-          
+
         )
 
   },
@@ -117,7 +118,7 @@ export default {
       })
     }
   }
-} 
+}
 </script>
 
 <style scoped>
@@ -127,7 +128,7 @@ export default {
 
   justify-content: center;
   align-items: center;
-  
+
 }
 
 .content {
@@ -135,7 +136,7 @@ export default {
   width: 85%;
   height: 80%;
   margin-top: 40px;
-  
+
 }
 .roomfield{
   display: flex;
@@ -173,7 +174,7 @@ export default {
   background-image: linear-gradient(to right, #ffc979 33%, rgba(255,201,121,0) 0%);
   background-position: bottom;
   background-size: 20px 2px;
-  background-repeat: repeat-x;  
+  background-repeat: repeat-x;
 }
 .imgbottom{
   display: flex;
@@ -188,13 +189,13 @@ export default {
   display: flex;
   align-items: center;
   margin-top: 20px;
-  
+
 }
 .roomIcon{
  height: 100%;
 }
 .roomsvg{
-  
+
   height: 100%;
   width: 100%;
 }
