@@ -1,26 +1,29 @@
 <template>
 
 <body>
-    <Navbar></Navbar>
-  <div className=" flex items-center h-screen" >
-    <ul>
-      <li>
-        <div className=" mt-24 ml-44 font-primary font-bold font text-5xl leading-normal">Organisiere <br> deine, Bringify!</div>
-      </li>
-      <li>
-        <div class="ml-44 mt-5 font-primary font-bold"> Lorem ipsum dolor sit amet consectetur. <br> Sem pulvinar ultrices hendrerit quisque pulvinar.</div>
-      </li>
-      <div class=" mt-10">
-        <router-link to="/createRoom">
-          <button class="ml-44 mt-10 font-primary font-extrabold bg-primary rounded-full w-28 h-10">Starten</button>
-        </router-link>
+  <Navbar></Navbar>
+  <div class="containerAll">
+    
+    <div class="containerLeft">
+      <div class="powerSatz font-primary font-black font text-6xl leading-normal ">
+        Organisiere <br> dein, Bringify!
       </div>
-    </ul>
-    <div class=" bg-cover">
+      <div class="beschreibung  mt-5 font-primary font-bold">
+        Plane Treffen mit deinen Freunden gemeinsam.<br> Egal ob Party, Geburtstagsfeier oder ein Treffen im Park. 
+      </div>
+      <div class="button">
+        <button class=" font-primary font-extrabold bg-primary rounded-full w-28 h-10">Starten</button>
+      </div>
+    </div>
+    <div class="containerRight" >
       <img src="../assets/Party.svg" alt="Party">
     </div>
 
+    <div class="vektorbg">
+      <img src="../assets/Vector.svg" alt="">
+    </div>
   </div>
+  
 
 </body>
 
@@ -44,3 +47,55 @@ export default {
   }
 }
 </script>
+<style scoped>
+.containerAll{
+  display: flex;
+  height: 100vh;
+  align-items: center;
+ 
+  
+}
+.containerLeft{
+  display: flex;
+  height: 70%;
+  width: 35%;
+  margin-left: 4%;
+  
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.containerRight{
+  display: flex;
+  height: 70%;
+  width: 55%;
+  margin-right: 4%;
+
+}
+.powerSatz{
+  height: 20%;
+  margin-left: 20%;
+  margin-top:10%;
+}
+.beschreibung{
+  margin-top: 10%;
+  height: 10%;
+  margin-left: 20%;
+}
+.button{
+  height: 10%;
+  margin-top: 5%;
+  margin-left: 20%;
+  display: flex;
+  align-items: flex-start;
+  
+
+}
+.vektorbg{
+  position: fixed;
+  /*z-index: -1;*/
+  width:100%;
+  margin: 0;
+}
+
+</style>
