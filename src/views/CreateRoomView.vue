@@ -17,7 +17,7 @@
             placeholder="Raumname"
             required
           />
-          <textarea v-model="beschreibung" class="w-full h-4/5 bg-transparent font-primary text-white border-white mt-5 g-dark_gray rounded-md border resize-none border-light_gray p-4 placeholder:text-white text-opacity-60" placeholder="Raumbeschreibung..."></textarea>
+          <textarea v-model="beschreibung" class="w-full h-4/5 bg-transparent font-primary text-white border-white mt-5 g-dark_gray rounded-md border resize-none border-white p-4 placeholder:text-white text-opacity-60" placeholder="Raumbeschreibung..."></textarea>
 
           <button
             class="bg-primary rounded-full font-bold text-white font-primary w-36 h-20 mt-5"
