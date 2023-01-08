@@ -1,108 +1,94 @@
 <template>
+  <body>
+    <Navbar></Navbar>
 
-<body>
-  <Navbar></Navbar>
-  
-  <div class="containerAll">
-    <div class="vektorbg">
-      <img src="../assets/Vector.svg" alt="">
-    </div>
-    <div class="containerLeft">
-      <div class="powerSatz font-primary font-black font text-6xl leading-normal ">
-        Organisiere <br> dein, Bringify!
+    <div class="containerAll">
+      <div class="vektorbg">
+        <img src="../assets/Vector.svg" alt="" />
       </div>
-      <div class="beschreibung  mt-5 font-primary font-bold">
-        Plane Treffen mit deinen Freunden gemeinsam.<br> Egal ob Party, Geburtstagsfeier oder ein Treffen im Park. 
+      <div class="containerLeft">
+        <div class="powerSatz font-primary font-black text-5xl leading-normal">
+          Organisiere <br />
+          dein, Bringify!
+        </div>
+        <div class="beschreibung mt-5 font-primary font-bold">
+          Plane Treffen mit deinen Freunden gemeinsam.<br />
+          Egal ob Party, Geburtstagsfeier oder ein Treffen im Park.
+        </div>
+        <div class="button">
+          <button
+            @click="this.$router.push('/createRoom')"
+            class="font-primary font-extrabold bg-primary rounded-full w-28 h-10"
+          >
+            Starten
+          </button>
+        </div>
       </div>
-      <div class="button">
-        <button @click="this.$router.push('/createRoom')" class=" font-primary font-extrabold bg-primary rounded-full w-28 h-10">Starten</button>
+      <div class="containerRight">
+        <img src="../assets/Party.svg" alt="Party" />
       </div>
     </div>
-    <div class="containerRight" >
-      <img src="../assets/Party.svg" alt="Party">
-    </div>
-
-    
-  </div>
-  
-
-</body>
-
-
-
+  </body>
 </template>
 
 <script>
-
 import Navbar from "@/components/Navbar";
 
-
 export default {
-  name: 'HomeView',
+  name: "HomeView",
   components: {
-
     Navbar,
-    methods: {
-      
-    }
-  }
-}
+    methods: {},
+  },
+};
 </script>
 <style scoped>
-.containerAll{
+.containerAll {
   display: flex;
   height: 100vh;
   overflow: hidden;
   align-items: center;
- 
-  
 }
-.containerLeft{
+.containerLeft {
   display: flex;
   height: 70%;
   width: 35%;
   margin-left: 4%;
-  
+
   flex-direction: column;
   justify-content: center;
-  
 }
-.containerRight{
+.containerRight {
   display: flex;
   height: 70%;
   width: 55%;
   margin-right: 4%;
-
 }
-.powerSatz{
+.powerSatz {
   height: 20%;
   margin-left: 20%;
-  margin-top:10%;
+  margin-top: 10%;
 }
-.beschreibung{
+.beschreibung {
   margin-top: 10%;
   height: 10%;
   margin-left: 20%;
 }
-.button{
+.button {
   height: 10%;
   margin-top: 5%;
   margin-left: 20%;
   display: flex;
   align-items: flex-start;
-  
-
 }
-.vektorbg{
+.vektorbg {
   position: fixed;
-  top:-20px;
-  
+  top: -20px;
+
   bottom: 0;
-  
+
   z-index: -1;
-  width:100%;
+  width: 100%;
   margin: 0;
-
 }
-
 </style>
